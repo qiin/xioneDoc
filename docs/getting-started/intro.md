@@ -21,4 +21,5 @@ XiOne 是基于开源项目 [new-api](https://github.com/QuantumNous/new-api) �
 
 - 想部署？看 [部署方式](/docs/deployment/docker)
 - 想接支付？看 [支付网关](/docs/payments/overview)
+- 想知道 API 密钥、计费怎么用？看 [平台使用指南](/docs/usage-guide/api-keys)
 - 想调整后台配置？看 [管理后台配置](/docs/admin-settings/sidebar-personalization)

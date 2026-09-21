@@ -6,13 +6,13 @@ sidebar_position: 1
 
 后台「计费与支付 → 支付网关」下可以同时启用多个支付渠道，用户充值时自己选：
 
-| 渠道 | 适合场景 |
-| --- | --- |
-| 易支付（支付宝 / 微信） | 面向国内用户的传统在线支付 |
-| Stripe | 面向海外用户的信用卡支付 |
-| Creem | 订阅制场景 |
-| Waffo / Waffo Pancake | 无需注册公司即可全球收款 |
-| PayerScan | 加密货币（USDT 等）收款，见 [PayerScan 配置](/docs/payments/payerscan) |
+| 渠道 | 适合场景 | 详细配置 |
+| --- | --- | --- |
+| 易支付（支付宝 / 微信） | 面向国内用户的传统在线支付 | [配置说明](/docs/payments/epay) |
+| Stripe | 面向海外用户的信用卡支付 | [配置说明](/docs/payments/stripe) |
+| Creem | 订阅制场景 | [配置说明](/docs/payments/creem) |
+| Waffo / Waffo Pancake | 无需注册公司即可全球收款 | [配置说明](/docs/payments/waffo) |
+| PayerScan | 加密货币（USDT 等）收款 | [配置说明](/docs/payments/payerscan) |
 
 ## 通用前提
 
@@ -24,3 +24,4 @@ sidebar_position: 1
 - 每个渠道各自的最低充值额、单价、折扣可以单独配置，互不影响。
 - 涉及回调（webhook）的渠道，务必在对应支付平台的后台把回调地址填对——地址错了，
   用户付了钱也不会到账，这是最常见的排障点。
+- 建议每接入一个新渠道，先用小额真实支付验证一遍到账流程，再对外开放。

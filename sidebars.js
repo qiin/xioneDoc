@@ -16,7 +16,23 @@ const sidebars = {
     {
       type: 'category',
       label: '支付网关',
-      items: ['payments/overview', 'payments/payerscan'],
+      items: [
+        'payments/overview',
+        'payments/payerscan',
+        'payments/epay',
+        'payments/stripe',
+        'payments/creem',
+        'payments/waffo',
+      ],
+    },
+    {
+      type: 'category',
+      label: '平台使用指南',
+      items: [
+        'usage-guide/api-keys',
+        'usage-guide/billing-and-quota',
+        'usage-guide/model-routing',
+      ],
     },
     {
       type: 'category',
