@@ -15,6 +15,19 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: '客户端接入指南',
+      items: [
+        'client-setup/overview',
+        'client-setup/claude-code',
+        'client-setup/codex-cli',
+        'client-setup/gemini-cli',
+        'client-setup/opencode',
+        'client-setup/workbuddy-codebuddy',
+        'client-setup/cc-switch',
+      ],
+    },
+    {
+      type: 'category',
       label: '支付网关',
       items: [
         'payments/overview',
