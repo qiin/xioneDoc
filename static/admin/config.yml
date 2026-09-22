@@ -21,53 +21,9 @@ collections:
       - {label: "侧边栏顺序（数字越小越靠前，留空按文件名排序）", name: "sidebar_position", widget: "number", required: false}
       - {label: "正文", name: "body", widget: "markdown"}
 
-  - name: "deployment"
-    label: "部署方式"
-    folder: "docs/deployment"
-    create: true
-    delete: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "标题（显示在侧边栏和浏览器标签）", name: "title", widget: "string"}
-      - {label: "侧边栏顺序（数字越小越靠前，留空按文件名排序）", name: "sidebar_position", widget: "number", required: false}
-      - {label: "正文", name: "body", widget: "markdown"}
-
   - name: "client-setup"
     label: "客户端接入指南"
     folder: "docs/client-setup"
-    create: true
-    delete: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "标题（显示在侧边栏和浏览器标签）", name: "title", widget: "string"}
-      - {label: "侧边栏顺序（数字越小越靠前，留空按文件名排序）", name: "sidebar_position", widget: "number", required: false}
-      - {label: "正文", name: "body", widget: "markdown"}
-
-  - name: "payments"
-    label: "支付网关"
-    folder: "docs/payments"
-    create: true
-    delete: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "标题（显示在侧边栏和浏览器标签）", name: "title", widget: "string"}
-      - {label: "侧边栏顺序（数字越小越靠前，留空按文件名排序）", name: "sidebar_position", widget: "number", required: false}
-      - {label: "正文", name: "body", widget: "markdown"}
-
-  - name: "usage-guide"
-    label: "平台使用指南"
-    folder: "docs/usage-guide"
-    create: true
-    delete: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "标题（显示在侧边栏和浏览器标签）", name: "title", widget: "string"}
-      - {label: "侧边栏顺序（数字越小越靠前，留空按文件名排序）", name: "sidebar_position", widget: "number", required: false}
-      - {label: "正文", name: "body", widget: "markdown"}
-
-  - name: "admin-settings"
-    label: "管理后台配置"
-    folder: "docs/admin-settings"
     create: true
     delete: true
     slug: "{{slug}}"
