@@ -35,6 +35,11 @@ Windows：`%USERPROFILE%\.claude\settings.json`
 
 ## 注意
 
-- 用 `ANTHROPIC_AUTH_TOKEN`，不是 `ANTHROPIC_API_KEY`——后者是官方密钥专用的字段，
-  接第三方网关要用前者。
+- 用 `ANTHROPIC_AUTH_TOKEN`，不是 `ANTHROPIC_API_KEY`——前者发送
+  `Authorization: Bearer` 头，是给第三方网关/代理用的；后者发送 `x-api-key` 头，
+  是官方密钥专用的字段，两者不能混用，接错字段会直接 401。
 - 网关地址不需要带 `/v1/messages` 后缀，Claude Code 自己会拼。
+- `ANTHROPIC_BASE_URL` 一旦不是 Anthropic 官方地址，Claude Code 会**默认关掉
+  MCP 工具搜索**（tool search）。如果你还接了 MCP 工具且发现搜不到，且确认
+  网关能正确转发 `tool_reference` 相关字段，可以再加一条环境变量
+  `ENABLE_TOOL_SEARCH=true` 手动打开。

@@ -10,9 +10,12 @@ WorkBuddy / CodeBuddy 是桌面 IDE 类应用，不是终端命令行工具，�
 
 ## 配置文件位置
 
-- 用户级：`C:\Users\<你的用户名>\.codebuddy\models.json`（Windows 示例路径，
-  macOS/Linux 对应各自的用户目录）
-- 项目级：`<你的项目目录>\.codebuddy\models.json`
+- 用户级：`~/.codebuddy/models.json`（Windows 上是 `%USERPROFILE%\.codebuddy\models.json`）
+- 项目级：`<你的项目目录>/.codebuddy/models.json`
+
+两边都存在时，**项目级会覆盖用户级**：同一个 `id` 的模型定义整条被项目级替换，
+`availableModels` 列表也是项目级整体覆盖用户级，不是合并。只在当前项目用可以直接
+写项目级，多个项目通用就写用户级。
 
 ## 配置内容
 
@@ -30,16 +33,22 @@ WorkBuddy / CodeBuddy 是桌面 IDE 类应用，不是终端命令行工具，�
       "supportsToolCall": true,
       "supportsImages": true
     }
-  ]
+  ],
+  "availableModels": ["xione-model"]
 }
 ```
 
-`apiKey` 这里用的是环境变量引用写法，实际密钥在系统环境变量 `XIONE_API_KEY`
-里设置，不直接写进文件。`maxInputTokens` / `maxOutputTokens` 按你后台配置的
-模型实际上限填，`supportsToolCall` / `supportsImages` 按模型实际能力填 `true`
-或 `false`。
+**`availableModels` 这一项不能漏**：`models` 只是登记这个模型的定义，真正决定
+它会不会出现在模型选择器里的是 `availableModels`——只写了 `models` 没加
+`availableModels` 是配置里最容易踩的坑，表现就是保存、重启之后模型选择器里
+死活找不到新模型。
+
+其他字段：`apiKey` 用的是环境变量引用写法（`${XIONE_API_KEY}`），实际密钥在
+系统环境变量 `XIONE_API_KEY` 里设置，不直接写进文件；`url` 同样支持这种
+`${VAR}` 写法。`maxInputTokens` / `maxOutputTokens` 按你后台配置的模型实际
+上限填，`supportsToolCall` / `supportsImages` 按模型实际能力填 `true` 或 `false`。
 
 ## 生效
 
-保存文件后**完全重启**应用（不是刷新窗口），文件要保存成不带 BOM 的 UTF-8，
-否则可能读取失败。重启后在模型选择器里应该能看到新加的模型。
+保存文件后**完全重启**应用（不是刷新窗口），重启后在模型选择器里应该能看到
+`availableModels` 里列出的模型。
