@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+title: "边栏个性化设置开关"
 ---
 
 # 边栏个性化设置开关

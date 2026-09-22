@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+title: "Claude Code（终端）"
 ---
 
 # Claude Code（终端）

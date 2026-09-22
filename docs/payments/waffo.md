@@ -1,5 +1,6 @@
 ---
 sidebar_position: 6
+title: "Waffo / Waffo Pancake 配置"
 ---
 
 # Waffo / Waffo Pancake 配置

@@ -1,0 +1,88 @@
+backend:
+  name: github
+  repo: qiin/xioneDoc
+  branch: main
+  # OAuth 代理的域名，见仓库 README「内容管理后台」一节。
+  base_url: https://doc.xione.ai
+
+publish_mode: simple
+media_folder: "static/img/uploads"
+public_folder: "/img/uploads"
+
+collections:
+  - name: "getting-started"
+    label: "快速开始"
+    folder: "docs/getting-started"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "标题（显示在侧边栏和浏览器标签）", name: "title", widget: "string"}
+      - {label: "侧边栏顺序（数字越小越靠前，留空按文件名排序）", name: "sidebar_position", widget: "number", required: false}
+      - {label: "正文", name: "body", widget: "markdown"}
+
+  - name: "deployment"
+    label: "部署方式"
+    folder: "docs/deployment"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "标题（显示在侧边栏和浏览器标签）", name: "title", widget: "string"}
+      - {label: "侧边栏顺序（数字越小越靠前，留空按文件名排序）", name: "sidebar_position", widget: "number", required: false}
+      - {label: "正文", name: "body", widget: "markdown"}
+
+  - name: "client-setup"
+    label: "客户端接入指南"
+    folder: "docs/client-setup"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "标题（显示在侧边栏和浏览器标签）", name: "title", widget: "string"}
+      - {label: "侧边栏顺序（数字越小越靠前，留空按文件名排序）", name: "sidebar_position", widget: "number", required: false}
+      - {label: "正文", name: "body", widget: "markdown"}
+
+  - name: "payments"
+    label: "支付网关"
+    folder: "docs/payments"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "标题（显示在侧边栏和浏览器标签）", name: "title", widget: "string"}
+      - {label: "侧边栏顺序（数字越小越靠前，留空按文件名排序）", name: "sidebar_position", widget: "number", required: false}
+      - {label: "正文", name: "body", widget: "markdown"}
+
+  - name: "usage-guide"
+    label: "平台使用指南"
+    folder: "docs/usage-guide"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "标题（显示在侧边栏和浏览器标签）", name: "title", widget: "string"}
+      - {label: "侧边栏顺序（数字越小越靠前，留空按文件名排序）", name: "sidebar_position", widget: "number", required: false}
+      - {label: "正文", name: "body", widget: "markdown"}
+
+  - name: "admin-settings"
+    label: "管理后台配置"
+    folder: "docs/admin-settings"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "标题（显示在侧边栏和浏览器标签）", name: "title", widget: "string"}
+      - {label: "侧边栏顺序（数字越小越靠前，留空按文件名排序）", name: "sidebar_position", widget: "number", required: false}
+      - {label: "正文", name: "body", widget: "markdown"}
+
+  - name: "faq"
+    label: "常见问题"
+    folder: "docs/faq"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "标题（显示在侧边栏和浏览器标签）", name: "title", widget: "string"}
+      - {label: "侧边栏顺序（数字越小越靠前，留空按文件名排序）", name: "sidebar_position", widget: "number", required: false}
+      - {label: "正文", name: "body", widget: "markdown"}

@@ -1,5 +1,6 @@
 ---
 sidebar_position: 6
+title: "WorkBuddy / CodeBuddy（桌面应用）"
 ---
 
 # WorkBuddy / CodeBuddy（桌面应用）

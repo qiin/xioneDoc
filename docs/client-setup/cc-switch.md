@@ -1,5 +1,6 @@
 ---
 sidebar_position: 7
+title: "CC Switch（多工具配置管理）"
 ---
 
 # CC Switch（多工具配置管理）

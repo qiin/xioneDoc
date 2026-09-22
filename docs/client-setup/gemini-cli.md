@@ -1,5 +1,6 @@
 ---
 sidebar_position: 4
+title: "Gemini CLI（终端）"
 ---
 
 # Gemini CLI（终端）

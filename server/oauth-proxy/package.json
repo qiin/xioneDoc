@@ -1,0 +1,15 @@
+{
+  "name": "xione-docs-oauth-proxy",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  },
+  "engines": {
+    "node": ">=20.0"
+  }
+}

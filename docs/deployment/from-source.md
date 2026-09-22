@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+title: "源码编译部署"
 ---
 
 # 源码编译部署

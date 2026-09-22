@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+title: "欢迎使用 XiOne 文档"
 ---
 
 # 欢迎使用 XiOne 文档

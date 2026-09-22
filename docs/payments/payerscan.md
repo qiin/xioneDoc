@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+title: "PayerScan（加密货币支付）配置"
 ---
 
 # PayerScan（加密货币支付）配置

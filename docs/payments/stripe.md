@@ -1,5 +1,6 @@
 ---
 sidebar_position: 4
+title: "Stripe 配置"
 ---
 
 # Stripe 配置

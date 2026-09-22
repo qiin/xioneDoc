@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+title: "Codex CLI（终端）"
 ---
 
 # Codex CLI（终端）
