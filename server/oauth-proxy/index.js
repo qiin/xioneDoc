@@ -7,6 +7,9 @@
 //
 // Required env vars: GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, ALLOWED_ORIGIN
 // (the docs site origin, e.g. https://doc.xione.ai). Optional: PORT (default 8081).
+// Reads them from a local .env file (see .env.example) so pm2/systemd don't
+// need the secret pasted into a command line or unit file.
+import 'dotenv/config'
 import express from 'express'
 
 const {
