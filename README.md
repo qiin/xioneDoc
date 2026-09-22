@@ -77,28 +77,57 @@ Decap CMS 的 GitHub 登录默认依赖 Netlify 的 Git Gateway，我们没有�
 所以需要自己起一个很小的 OAuth 代理（代码已经在 `server/oauth-proxy/`），流程见
 [官方文档](https://decapcms.org/docs/external-oauth-clients/)。上线步骤：
 
-1. **创建 GitHub OAuth App**（这一步必须你自己在 GitHub 账号下操作，我这边没有权限代做）：
-   GitHub 右上角头像 → Settings → Developer settings → OAuth Apps → New OAuth App。
+1. **创建 GitHub OAuth App**（注意不是 GitHub App，是 OAuth App，这一步必须你自己在
+   GitHub 账号下操作，我这边没有权限代做）：GitHub 右上角头像 → Settings →
+   Developer settings → 左侧栏 **OAuth Apps** → New OAuth App。
    - Homepage URL：`https://doc.xione.ai`
    - Authorization callback URL：`https://doc.xione.ai/callback`
+   - "Expire user access tokens" 不勾（勾了 token 会过期，下面这个最小化代理没实现
+     `refresh_token` 刷新逻辑，过期后要重新登录）
 
-   创建后拿到一个 `Client ID` 和 `Client Secret`（Secret 只显示一次，记下来）。
+   Register application 后，在应用详情页复制 `Client ID`，再点
+   **Generate a new client secret** 拿到 `Client Secret`（只显示这一次）。
 
-2. **部署 OAuth 代理**（和文档站同一台服务器即可）：
+2. **在服务器上部署 OAuth 代理**（和文档站同一台机器即可）：
 
    ```bash
    cd server/oauth-proxy
    npm install
-   GITHUB_CLIENT_ID=xxx \
-   GITHUB_CLIENT_SECRET=xxx \
-   ALLOWED_ORIGIN=https://doc.xione.ai \
-   PORT=8081 \
-   npm start
+   cp .env.example .env
    ```
 
-   生产环境建议用 `pm2` 或 systemd 常驻，不要用前台命令。
+   编辑 `.env`，填入上一步拿到的两个值：
 
-3. **Nginx 把 `/auth` 和 `/callback` 转发给这个代理**，其余路径继续走静态文件
+   ```ini
+   GITHUB_CLIENT_ID=你的Client ID
+   GITHUB_CLIENT_SECRET=你的Client Secret
+   ALLOWED_ORIGIN=https://doc.xione.ai
+   PORT=8081
+   ```
+
+   `.env` 已经在 `.gitignore` 里，不会被提交。
+
+3. **用 pm2 常驻这个代理**（不要用前台命令，服务器重启或者 SSH 断开就没了）：
+
+   ```bash
+   npm install -g pm2        # 服务器上还没装过 pm2 的话先装
+   pm2 start index.js --name xione-docs-oauth-proxy
+   pm2 save                  # 记住当前进程列表
+   pm2 startup                # 打印一条 sudo 开头的命令，复制出来单独执行一次，
+                              # 服务器重启后 pm2 自己拉起，不用手动再 start
+   ```
+
+   验证是否正常：
+
+   ```bash
+   pm2 status                                    # xione-docs-oauth-proxy 应为 online
+   curl -I http://127.0.0.1:8081/auth            # 应返回 302，Location 指向 github.com
+   ```
+
+   以后改了 `server/oauth-proxy/` 下的代码，用 `pm2 restart xione-docs-oauth-proxy`
+   重启，不用重新 `pm2 start`。
+
+4. **Nginx 把 `/auth` 和 `/callback` 转发给这个代理**，其余路径继续走静态文件
    （追加到 `docs-link.md` 里那份 `doc.xione.ai` 的 `server` 块里）：
 
    ```nginx
@@ -110,7 +139,7 @@ Decap CMS 的 GitHub 登录默认依赖 Netlify 的 Git Gateway，我们没有�
    }
    ```
 
-4. `nginx -t && nginx -s reload`，然后访问 `https://doc.xione.ai/admin`，
+5. `nginx -t && nginx -s reload`，然后访问 `https://doc.xione.ai/admin`，
    点 "Login with GitHub" 走一遍登录，能看到左侧按分类分组的文档列表就是配置成功了。
 
 登录用的是你自己的 GitHub 账号，需要对 `qiin/xioneDoc` 有写权限；保存内容时后台会直接
