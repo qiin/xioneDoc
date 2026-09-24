@@ -1,5 +1,5 @@
 ---
-title: Claude Code - 终端
+title: Claude Code 配置教程
 sidebar_position: 2
 ---
 
