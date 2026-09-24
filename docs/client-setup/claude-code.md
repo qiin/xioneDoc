@@ -4,12 +4,15 @@ sidebar_position: 2
 ---
 # Claude Code（终端）
 
-## 原理
+通过配置文件的方式在电脑上安装和配置 Claude Code CLI（命令行工具）
 
-Claude Code 默认直接连 Anthropic，但支持通过 `ANTHROPIC_BASE_URL` 把所有请求
-改发到别的地址。这个变量只换域名，请求体、流式格式、工具调用的数据结构仍然是
-Anthropic Messages API 的样子——所以背后接的必须是一个认这个协议的服务，
-XiOne 的 `/v1/messages` 正好就是这个协议。
+:::info
+
+如果遇到问题，可以将本页全部内容和问题截图，复制给 [豆包](https://www.doubao.com/) 或者 [DeepSeek](https://chat.deepseek.com/) 等 AI，按照它的提示执行对应命令即可。
+
+如果 AI 也无法解决，可以联系我们的工程师，为您提供技术上的支持与帮助。
+
+:::
 
 # Windows
 
