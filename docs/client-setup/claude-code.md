@@ -1,8 +1,7 @@
 ---
-title: Claude Code 配置教程
+title: Claude Code - 终端
 sidebar_position: 2
 ---
-
 # Claude Code（终端）
 
 ## 原理
@@ -11,6 +10,18 @@ Claude Code 默认直接连 Anthropic，但支持通过 `ANTHROPIC_BASE_URL` 把
 改发到别的地址。这个变量只换域名，请求体、流式格式、工具调用的数据结构仍然是
 Anthropic Messages API 的样子——所以背后接的必须是一个认这个协议的服务，
 XiOne 的 `/v1/messages` 正好就是这个协议。
+
+# Windows
+
+## 1. 安装 Node.js / Git
+
+前往 [Node.js 官网](https://nodejs.org/en/download) 下载并安装 LTS 版本。（如果已经安装可以跳过）
+
+验证安装：
+
+如果出现下面的提示就说明 node 已经安装成功了
+
+检查node版本复制node --version
 
 ## 配置方式一：环境变量（临时/个人）
 
@@ -35,11 +46,11 @@ Windows：`%USERPROFILE%\.claude\settings.json`
 
 ## 注意
 
-- 用 `ANTHROPIC_AUTH_TOKEN`，不是 `ANTHROPIC_API_KEY`——前者发送
+* 用 `ANTHROPIC_AUTH_TOKEN`，不是 `ANTHROPIC_API_KEY`——前者发送
   `Authorization: Bearer` 头，是给第三方网关/代理用的；后者发送 `x-api-key` 头，
   是官方密钥专用的字段，两者不能混用，接错字段会直接 401。
-- 网关地址不需要带 `/v1/messages` 后缀，Claude Code 自己会拼。
-- `ANTHROPIC_BASE_URL` 一旦不是 Anthropic 官方地址，Claude Code 会**默认关掉
+* 网关地址不需要带 `/v1/messages` 后缀，Claude Code 自己会拼。
+* `ANTHROPIC_BASE_URL` 一旦不是 Anthropic 官方地址，Claude Code 会**默认关掉
   MCP 工具搜索**（tool search）。如果你还接了 MCP 工具且发现搜不到，且确认
   网关能正确转发 `tool_reference` 相关字段，可以再加一条环境变量
   `ENABLE_TOOL_SEARCH=true` 手动打开。
