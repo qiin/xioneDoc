@@ -1,21 +1,20 @@
 ---
+title: Claude Code（终端）
 sidebar_position: 2
-title: "Claude Code（终端）"
 ---
-
 # Claude Code（终端）
 
-通过配置文件的方式在电脑上安装和配置 Claude Code CLI （命令行工具）
+通过配置文件，在电脑上快速安装并配置 Claude Code CLI（命令行工具）。
 
-> 如果遇到问题，可以将本页全部内容和问题截图，复制给 [豆包](https://www.doubao.com/chat/) 或者 [deepseek](https://chat.deepseek.com/) 等AI，按照他的提示执行对应命令即可
+> 如果在安装或配置过程中遇到问题，可以将本页完整内容与报错截图一并发送给 [豆包](https://www.doubao.com/chat/) 或者 [deepseek](https://chat.deepseek.com/) 等 AI 助手，并按照其提示执行相应命令。
 >
-> 如果 AI 也无法解决，可以联系我们的工程师，为您提供技术上的支持与帮助
+> 如果问题仍未解决，请联系我们的技术工程师，我们将为您提供进一步的技术支持与协助。
 
 # Windows
 
 ## 1. 安装 Node.js / Git
 
-前往 [Node.js 官网](https://nodejs.org/en/download) 下载并安装 LTS 版本。（如果已经安装可以跳过）
+前往 [Node.js 官网](https://nodejs.org/en/download) 下载并安装 LTS （长期支持）版本。如果您的电脑已安装 Node.js，可跳过此步骤。
 
 验证安装：
 
@@ -25,32 +24,32 @@ node --version
 
 如果出现下面的提示就说明 node 已经安装成功了
 
-![图像](https://assets.aicodewith.ai/docs/1769236302904-c4111827-cce4-4373-a0b6-9fadb2fd5783.png)
+![图像](/img/uploads/codex-图像-2026年9月28日-10_48_36.png)
 
-> 需要注意的是，Nodejs 的版本必须为 18+
+> 需要注意的是，Node.js 版本必须为 18 或更高版本。
 >
-> 如果低于这个版本，可以问一下 AI 如何升级 Nodejs 版本，让 AI 先给您命令收集系统信息，之后它就会提供最快最准确的指导
+> 如果版本低于 18，可以询问 AI 如何升级。建议先让 AI 提供用于收集系统信息的命令，再根据检测结果获取更准确、快捷的升级指导。
 
-前往 [Git 官网](https://git-scm.com/install/windows)，下载安装包，然后一路 yes 就行，都是英文的，不用管
+接下来前往 [Git 官网](https://git-scm.com/install/windows)，下载安装包。安装界面虽然是英文，但通常保留默认选项并按提示继续即可。
 
-![图像](https://assets.aicodewith.ai/docs/1769744581907-7399da60-33fa-47fb-8d92-fa16f240d8b9.png)
+![图像](/img/uploads/2.png)
 
 ## 2. 安装 Claude Code CLI
 
-按 **Win + R**输入 Powershell
-打开 PowerShell （建议以管理员身份运行）并执行：
+按 **Win + R**，输入 `PowerShell` 并打开。
+建议以管理员身份运行，然后执行以下命令：
 
 ```
 npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.com/
 ```
 
-![图像](https://assets.aicodewith.ai/docs/1769236261656-99a81168-363a-4652-90c3-59a34c1c961b.png)
+![图像](/img/uploads/截屏2026-09-28-11.00.57.png)
 
-> 如果遇到在此系统上禁止运行脚本，需要用管理员权限运行powershell，然后执行  `Set-ExecutionPolicy Unrestricted` 命令
+> 如果遇到在此系统上禁止运行脚本，需要用管理员权限运行powershell，然后执行 Set-ExecutionPolicy Unrestricted 命令
 
 ## 3. 创建配置文件
 
-> 创建您的API key：[https://doc.xione.ai/docs/client-setup/overview/)
+> 创建您的API key：(https://xione.ai/keys)
 
 按 **Win + R**输入 Powershell
 打开 PowerShell （建议以管理员身份运行）并执行：
@@ -89,7 +88,7 @@ Write-Host "  - settings.json: $settingsFile"
 Write-Host "  - .claude.json: $claudeJsonFile"
 ```
 
-![企业微信截图_17693565757036](https://assets.aicodewith.ai/docs/1769356582275-c900d57a-858b-47e1-ad85-f855f1f4e8cf.png)
+![企业微信截图_17693565757036](/img/uploads/4.png)
 
 ## 4. 验证安装
 
@@ -348,7 +347,7 @@ claude
 
 `ANTHROPIC_BASE_URL` 和 `ANTHROPIC_AUTH_TOKEN`
 
-## 3. 401 \{"error":"Invalid API key"\}
+## 3. 401 {"error":"Invalid API key"}
 
 ### 错误截图
 
@@ -357,4 +356,3 @@ claude
 ### 解决办法
 
 这个问题是因为 key 设置错了，可以去网站重新生成一个 key ，然后参考前面的教程，重新设置下环境变量 `ANTHROPIC_AUTH_TOKEN` 这个环境变量
-
