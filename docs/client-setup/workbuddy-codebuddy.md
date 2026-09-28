@@ -1,54 +1,87 @@
 ---
-sidebar_position: 6
-title: "WorkBuddy / CodeBuddy（桌面应用）"
+sidebar_position: 12
+title: "WorkBuddy AI"
 ---
 
-# WorkBuddy / CodeBuddy（桌面应用）
+# WorkBuddy AI
 
-WorkBuddy / CodeBuddy 是桌面 IDE 类应用，不是终端命令行工具，通过一个
-`models.json` 文件添加自定义模型，走 OpenAI Chat Completions 协议。
+WorkBuddy 是腾讯出品的全场景 AI 办公工作台。说出要求、开始执行任务、交付完整成果。
 
-## 配置文件位置
+# WorkBuddy AI
 
-- 用户级：`~/.codebuddy/models.json`（Windows 上是 `%USERPROFILE%\.codebuddy\models.json`）
-- 项目级：`<你的项目目录>/.codebuddy/models.json`
+## 1.下载并登录 WorkBuddy AI
 
-两边都存在时，**项目级会覆盖用户级**：同一个 `id` 的模型定义整条被项目级替换，
-`availableModels` 列表也是项目级整体覆盖用户级，不是合并。只在当前项目用可以直接
-写项目级，多个项目通用就写用户级。
+1.[打开 WorkBuddy 官网](https://www.workbuddy.cn/)，找到您的系统下载并安装桌面客户端。
 
-## 配置内容
+![image](https://assets.aicodewith.ai/docs/1787124715539-fd5a708b-44f6-4a47-87b2-0561a18c1cf7.png)
 
-```json
-{
-  "models": [
-    {
-      "id": "xione-model",
-      "name": "XiOne 网关",
-      "vendor": "xione",
-      "url": "https://你的网关域名/v1/chat/completions",
-      "apiKey": "${XIONE_API_KEY}",
-      "maxInputTokens": 128000,
-      "maxOutputTokens": 8192,
-      "supportsToolCall": true,
-      "supportsImages": true
-    }
-  ],
-  "availableModels": ["xione-model"]
-}
-```
+2.打开 WorkBuddy AI 后，使用邮箱等注册登录
 
-**`availableModels` 这一项不能漏**：`models` 只是登记这个模型的定义，真正决定
-它会不会出现在模型选择器里的是 `availableModels`——只写了 `models` 没加
-`availableModels` 是配置里最容易踩的坑，表现就是保存、重启之后模型选择器里
-死活找不到新模型。
+![image](https://assets.aicodewith.ai/docs/1787124917822-e661aaca-ad84-45fd-8916-5c776310dad1.png)
 
-其他字段：`apiKey` 用的是环境变量引用写法（`${XIONE_API_KEY}`），实际密钥在
-系统环境变量 `XIONE_API_KEY` 里设置，不直接写进文件；`url` 同样支持这种
-`${VAR}` 写法。`maxInputTokens` / `maxOutputTokens` 按你后台配置的模型实际
-上限填，`supportsToolCall` / `supportsImages` 按模型实际能力填 `true` 或 `false`。
+## 2.添加自定义模型
 
-## 生效
+### 1.Claude
 
-保存文件后**完全重启**应用（不是刷新窗口），重启后在模型选择器里应该能看到
-`availableModels` 里列出的模型。
+1.点击设置
+
+![image](https://assets.aicodewith.ai/docs/1787128154427-550ed835-01d5-4bcd-ad79-d8ae9f4e8421.png)
+
+2.点击「模型」，点击「添加模型」。
+
+![image](https://assets.aicodewith.ai/docs/1787128260175-32a52833-f44d-4182-baba-01f0ad0bf345.png)
+
+3.添加供应商
+
+![image](https://assets.aicodewith.ai/docs/1787128579178-9eb7380b-cfa0-40fa-81c3-0f03d274c673.png)
+
+4.写入模型配置
+
+**接口地址：**https://你的XiOne网关域名
+**API Key：**点击链接去创建你的API Key [https://doc.xione.ai/docs/client-setup/overview/)
+**模型名称：**选择您需要使用的模型名称复制粘贴上即可
+claude-haiku-4-5-20251001
+claude-opus-4-6
+claude-opus-4-7
+claude-opus-4-8
+claude-opus-5
+claude-sonnet-4-6
+claude-sonnet-5
+
+![image](https://assets.aicodewith.ai/docs/1787129215352-1024dcd2-2756-4528-8476-a8b63adb3ae9.png)
+
+5. 切换模型，正常回复即可使用啦
+
+![image](https://assets.aicodewith.ai/docs/1787130206548-61dc1fd6-b672-49eb-980d-56ad6cc41946.png)
+
+### 2.ChatGPT
+
+1.点击设置
+
+![image](https://assets.aicodewith.ai/docs/1787128154427-550ed835-01d5-4bcd-ad79-d8ae9f4e8421.png)
+
+2.点击「模型」，点击「添加模型」。
+
+![image](https://assets.aicodewith.ai/docs/1787128260175-32a52833-f44d-4182-baba-01f0ad0bf345.png)
+
+3.添加供应商
+
+![image](https://assets.aicodewith.ai/docs/1787128579178-9eb7380b-cfa0-40fa-81c3-0f03d274c673.png)
+
+4.写入模型配置
+
+**接口地址：**https://你的XiOne网关域名/v1
+**API Key：**点击链接去创建你的API Key [https://doc.xione.ai/docs/client-setup/overview/)
+**模型名称：**选择您需要使用的模型名称复制粘贴上即可
+gpt-5.4
+gpt-5.5
+gpt-5.6-sol
+gpt-5.6-luna
+gpt-5.6-terra
+
+![image](https://assets.aicodewith.ai/docs/1787130554161-8ade2ea2-b731-4f72-bc7c-63e144ae20a5.png)
+
+5. 切换模型，正常回复即可使用啦
+
+![image](https://assets.aicodewith.ai/docs/1787130638668-c63cfebc-bd3d-49b2-be57-a28aa48cff87.png)
+
